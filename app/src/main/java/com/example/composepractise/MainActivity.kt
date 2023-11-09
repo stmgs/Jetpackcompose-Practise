@@ -30,8 +30,10 @@ class MainActivity : ComponentActivity() {
             ) {
                 Text(text = "Hello")
                 Text(text = "World")
+                Text(text = "test 2 for git")
                 Text(text = "This is a change for practise" +
                         "")
+
             }
         }
     }

@@ -45,4 +45,5 @@
     </string>
     <string name="title_activity_text_styling_exercise">TextStylingExercise</string>
     <string name="title_activity_state_exercise">StateExercise</string>
+    <string name="title_activity_uipractise_class2">UIPractiseClass2</string>
 </resources>

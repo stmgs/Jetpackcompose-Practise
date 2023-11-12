@@ -46,4 +46,5 @@
     <string name="title_activity_text_styling_exercise">TextStylingExercise</string>
     <string name="title_activity_state_exercise">StateExercise</string>
     <string name="title_activity_uipractise_class2">UIPractiseClass2</string>
+    <string name="title_activity_lists_practise">ListsPractise</string>
 </resources>

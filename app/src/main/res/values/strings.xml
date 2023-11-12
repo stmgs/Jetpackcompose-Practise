@@ -48,4 +48,5 @@
     <string name="title_activity_uipractise_class2">UIPractiseClass2</string>
     <string name="title_activity_lists_practise">ListsPractise</string>
     <string name="title_activity_constraint_layout_practise">ConstraintLayoutPractise</string>
+    <string name="title_activity_simple_animation">SimpleAnimation</string>
 </resources>

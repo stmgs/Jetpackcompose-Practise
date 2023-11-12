@@ -62,4 +62,3 @@ class ConstraintLayoutPractise : ComponentActivity() {
             }
         }
     }
-}

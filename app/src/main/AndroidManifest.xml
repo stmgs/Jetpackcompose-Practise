@@ -13,24 +13,26 @@
         android:theme="@style/Theme.ComposePractise"
         tools:targetApi="31">
         <activity
+            android:name=".AnimatedProgressBar"
+            android:exported="false"
+            android:label="@string/title_activity_animated_progress_bar"
+            android:theme="@style/Theme.ComposePractise" />
+        <activity
             android:name=".SimpleAnimation"
             android:exported="true"
             android:label="@string/title_activity_simple_animation"
-            android:theme="@style/Theme.ComposePractise" >
+            android:theme="@style/Theme.ComposePractise">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ConstraintLayoutPractise"
             android:exported="true"
             android:label="@string/title_activity_constraint_layout_practise"
-            android:theme="@style/Theme.ComposePractise">
-
-        </activity>
+            android:theme="@style/Theme.ComposePractise"></activity>
         <activity
             android:name=".ListsPractise"
             android:exported="true"

@@ -13,6 +13,11 @@
         android:theme="@style/Theme.ComposePractise"
         tools:targetApi="31">
         <activity
+            android:name=".MeditationUI"
+            android:exported="false"
+            android:label="@string/title_activity_meditation_ui"
+            android:theme="@style/Theme.ComposePractise" />
+        <activity
             android:name=".AnimatedProgressBar"
             android:exported="false"
             android:label="@string/title_activity_animated_progress_bar"
@@ -32,7 +37,7 @@
             android:name=".ConstraintLayoutPractise"
             android:exported="true"
             android:label="@string/title_activity_constraint_layout_practise"
-            android:theme="@style/Theme.ComposePractise"></activity>
+            android:theme="@style/Theme.ComposePractise" />
         <activity
             android:name=".ListsPractise"
             android:exported="true"

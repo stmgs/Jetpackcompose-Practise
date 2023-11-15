@@ -50,4 +50,5 @@
     <string name="title_activity_constraint_layout_practise">ConstraintLayoutPractise</string>
     <string name="title_activity_simple_animation">SimpleAnimation</string>
     <string name="title_activity_animated_progress_bar">AnimatedProgressBar</string>
+    <string name="title_activity_meditation_ui">MeditationUI</string>
 </resources>

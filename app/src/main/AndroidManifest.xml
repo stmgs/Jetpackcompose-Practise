@@ -14,9 +14,15 @@
         tools:targetApi="31">
         <activity
             android:name=".MeditationUI"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_meditation_ui"
-            android:theme="@style/Theme.ComposePractise" />
+            android:theme="@style/Theme.ComposePractise" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".AnimatedProgressBar"
             android:exported="false"
@@ -27,11 +33,7 @@
             android:exported="true"
             android:label="@string/title_activity_simple_animation"
             android:theme="@style/Theme.ComposePractise">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ConstraintLayoutPractise"

@@ -46,9 +46,10 @@ import com.example.composepractise.ui.theme.*
 fun HomeScreen(){
     Box(modifier = Modifier
         .background(DeepBlue)
-        .fillMaxSize())
+        .fillMaxSize()
+    )
     {
-        Column {
+        Column{
             GreetingSection()
             ChipSection(chips =  listOf("Sweet sleep","Insomnia","Depression"))
             CurrentMeditation()
@@ -88,9 +89,11 @@ fun HomeScreen(){
                 BottomMenuContent("Meditate", R.drawable.ic_bubble),
                 BottomMenuContent("Sleep", R.drawable.ic_moon),
                 BottomMenuContent("Music", R.drawable.ic_music),
-                BottomMenuContent("Profile", R.drawable.ic_profile)),
+                BottomMenuContent("Profile", R.drawable.ic_profile)
+                ),
+
+
             )
-                //modifier = Modifier.align(Alignment.BottomCenter))
 
         }
     }
@@ -159,7 +162,7 @@ fun ChipSection(
                 Text(text = chips[it],
                     color = TextWhite,
                     style = MaterialTheme.typography.bodyLarge,
-                    fontSize = 20.sp
+                    fontSize = 15.sp
                 )
             }
         }
@@ -339,11 +342,11 @@ fun BottomMenu(
     inactiveTextColor : Color = AquaBlue,
     initialSelectedItemIndex : Int = 0
 ) {
+    println("Inside bottom menu")
 
     var selectedIndex by remember {
         mutableStateOf(initialSelectedItemIndex)
     }
-    println("Inside bottom menu")
 
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
@@ -352,20 +355,23 @@ fun BottomMenu(
             .fillMaxWidth()
             .background(DeepBlue)
             .padding(15.dp)
-
     ) {
-
-        items.forEachIndexed{ index, item ->
+        println("inside row")
+        for ((index, value) in items.withIndex()){
+            println("inside for loop")
             BottomMenuItem(
-                item = item,
+                item = value,
                 isSelected = index == selectedIndex,
                 activeHighlightColor = activeHighlightColor,
                 activeTextColor = activeTextColor,
                 inactiveTextColor = inactiveTextColor
             ) {
-                    selectedIndex = index
+                selectedIndex = index
             }
         }
+        /*items.forEachIndexed { index, bottomMenuContent ->
+
+        }*/
     }
 }
 

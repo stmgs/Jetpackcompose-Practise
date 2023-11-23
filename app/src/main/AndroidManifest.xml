@@ -13,10 +13,15 @@
         android:theme="@style/Theme.ComposePractise"
         tools:targetApi="31">
         <activity
+            android:name=".BottomNavigationBar"
+            android:exported="false"
+            android:label="@string/title_activity_bottom_navigation_bar"
+            android:theme="@style/Theme.ComposePractise" />
+        <activity
             android:name=".MeditationUI"
             android:exported="true"
             android:label="@string/title_activity_meditation_ui"
-            android:theme="@style/Theme.ComposePractise" >
+            android:theme="@style/Theme.ComposePractise">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,9 +37,7 @@
             android:name=".SimpleAnimation"
             android:exported="true"
             android:label="@string/title_activity_simple_animation"
-            android:theme="@style/Theme.ComposePractise">
-
-        </activity>
+            android:theme="@style/Theme.ComposePractise" />
         <activity
             android:name=".ConstraintLayoutPractise"
             android:exported="true"

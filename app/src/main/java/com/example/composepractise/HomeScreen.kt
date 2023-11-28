@@ -240,7 +240,7 @@ fun FeatureSection(
         )
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(start = 7.5.dp, end=7.5.dp, bottom = 100.dp),
+            contentPadding = PaddingValues(7.5.dp),
             modifier = Modifier.fillMaxHeight()
         ){
             items(features.size){
@@ -368,10 +368,9 @@ fun BottomMenu(
         modifier = modifier
             .fillMaxWidth()
             .background(DeepBlue)
-            .padding(15.dp)
+            .padding(10.dp)
 
     ) {
-        println("inside row")
         for ((index, value) in items.withIndex()){
             println("inside for loop")
             BottomMenuItem(

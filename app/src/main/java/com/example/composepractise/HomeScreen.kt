@@ -1,5 +1,6 @@
 package com.example.composepractise
 
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,8 +21,10 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -42,57 +45,71 @@ import com.example.composepractise.data.BottomMenuContent
 import com.example.composepractise.data.Feature
 import com.example.composepractise.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(){
     Box(modifier = Modifier
         .background(DeepBlue)
-        .fillMaxSize())
+        .fillMaxSize()
+    )
     {
-        Column {
-            GreetingSection()
-            ChipSection(chips =  listOf("Sweet sleep","Insomnia","Depression"))
-            CurrentMeditation()
-            FeatureSection(features = listOf(
-                Feature(
-                    title = "Sleep meditation",
-                    R.drawable.ic_headphone,
-                    BlueViolet1,
-                    BlueViolet2,
-                    BlueViolet3
-                ),
-                Feature(
-                    title = "Tips for sleeping",
-                    R.drawable.ic_videocam,
-                    LightGreen1,
-                    LightGreen2,
-                    LightGreen3
-                ),
-                Feature(
-                    title = "Night island",
-                    R.drawable.ic_headphone,
-                    OrangeYellow1,
-                    OrangeYellow2,
-                    OrangeYellow3
-                ),
-                Feature(
-                    title = "Calming sounds",
-                    R.drawable.ic_headphone,
-                    Beige1,
-                    Beige2,
-                    Beige3
+        Scaffold(
+            topBar = { /* you can add top bar content  */ },
+            bottomBar = {
+                BottomMenu(
+                    items = listOf(
+                        BottomMenuContent("Home", R.drawable.ic_home),
+                        BottomMenuContent("Meditate", R.drawable.ic_bubble),
+                        BottomMenuContent("Sleep", R.drawable.ic_moon),
+                        BottomMenuContent("Music", R.drawable.ic_music),
+                        BottomMenuContent("Profile", R.drawable.ic_profile)
+                    )
                 )
-            ))
-            BottomMenu(
-                items = listOf(
-                BottomMenuContent("Home", R.drawable.ic_home),
-                BottomMenuContent("Meditate", R.drawable.ic_bubble),
-                BottomMenuContent("Sleep", R.drawable.ic_moon),
-                BottomMenuContent("Music", R.drawable.ic_music),
-                BottomMenuContent("Profile", R.drawable.ic_profile)),
-            )
-                //modifier = Modifier.align(Alignment.BottomCenter))
+            }
+        ) {innerPadding ->
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .background(DeepBlue)
+            ){
+                GreetingSection()
+                ChipSection(chips =  listOf("Sweet sleep","Insomnia","Depression"))
+                CurrentMeditation()
+                FeatureSection(features = listOf(
+                    Feature(
+                        title = "Sleep meditation",
+                        R.drawable.ic_headphone,
+                        BlueViolet1,
+                        BlueViolet2,
+                        BlueViolet3
+                    ),
+                    Feature(
+                        title = "Tips for sleeping",
+                        R.drawable.ic_videocam,
+                        LightGreen1,
+                        LightGreen2,
+                        LightGreen3
+                    ),
+                    Feature(
+                        title = "Night island",
+                        R.drawable.ic_headphone,
+                        OrangeYellow1,
+                        OrangeYellow2,
+                        OrangeYellow3
+                    ),
+                    Feature(
+                        title = "Calming sounds",
+                        R.drawable.ic_headphone,
+                        Beige1,
+                        Beige2,
+                        Beige3
+                    )
+                ))
 
+
+            }
         }
+
     }
 }
 
@@ -113,19 +130,19 @@ fun GreetingSection(
             Text(
                 text = "Good Morning, $name",
                 style = MaterialTheme.typography.headlineLarge
-                )
+            )
             Text(
                 text = "We wish you have a good day.",
                 style = MaterialTheme.typography.bodyLarge
             )
 
         }
-        
+
         Icon(painter = painterResource(id = R.drawable.ic_search),
             contentDescription = "Search",
             tint = Color.White,
             modifier = Modifier.size(24.dp)
-            )
+        )
     }
 }
 
@@ -136,7 +153,7 @@ fun ChipSection(
     var selectedChipIndex by remember  {
         mutableStateOf(0)
     }
-    
+
     LazyRow{
         items(
             chips.size
@@ -159,7 +176,7 @@ fun ChipSection(
                 Text(text = chips[it],
                     color = TextWhite,
                     style = MaterialTheme.typography.bodyLarge,
-                    fontSize = 20.sp
+                    fontSize = 15.sp
                 )
             }
         }
@@ -193,7 +210,7 @@ fun CurrentMeditation(
                 color = TextWhite
             )
         }
-        
+
         Box(
             contentAlignment = Alignment.Center ,
             modifier = Modifier
@@ -213,21 +230,21 @@ fun CurrentMeditation(
 
 @Composable
 fun FeatureSection(
-features : List<Feature>
+    features : List<Feature>
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             text = "Features",
             style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.padding(15.dp)
-            )
+        )
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(start = 7.5.dp, end=7.5.dp, bottom = 100.dp),
             modifier = Modifier.fillMaxHeight()
         ){
             items(features.size){
-                 FeatureItem(feature = features[it])
+                FeatureItem(feature = features[it])
             }
         }
     }
@@ -296,7 +313,7 @@ fun FeatureItem(
                 color = feature.lightColor
             )
         }
-        
+
         Box(modifier = Modifier
             .fillMaxSize()
             .padding(15.dp)){
@@ -304,12 +321,12 @@ fun FeatureItem(
                 style = MaterialTheme.typography.headlineMedium,
                 lineHeight = 26.sp,
                 modifier = Modifier.align(Alignment.TopStart)
-                )
-                Icon(painter = painterResource(id = feature.iconId),
-                    contentDescription = feature.title,
-                    tint = Color.White,
-                    modifier = Modifier.align(Alignment.BottomStart)
-                    )
+            )
+            Icon(painter = painterResource(id = feature.iconId),
+                contentDescription = feature.title,
+                tint = Color.White,
+                modifier = Modifier.align(Alignment.BottomStart)
+            )
             Text(text = "Start",
                 color = TextWhite,
                 fontSize = 14.sp,
@@ -322,12 +339,12 @@ fun FeatureItem(
                     .clip(RoundedCornerShape(10.dp))
                     .background(ButtonBlue)
                     .padding(vertical = 6.dp, horizontal = 15.dp)
-                )
+            )
 
         }
 
     }
-    
+
 }
 
 @Composable
@@ -339,11 +356,11 @@ fun BottomMenu(
     inactiveTextColor : Color = AquaBlue,
     initialSelectedItemIndex : Int = 0
 ) {
+    println("Inside bottom menu")
 
     var selectedIndex by remember {
         mutableStateOf(initialSelectedItemIndex)
     }
-    println("Inside bottom menu")
 
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
@@ -354,18 +371,22 @@ fun BottomMenu(
             .padding(15.dp)
 
     ) {
-
-        items.forEachIndexed{ index, item ->
+        println("inside row")
+        for ((index, value) in items.withIndex()){
+            println("inside for loop")
             BottomMenuItem(
-                item = item,
+                item = value,
                 isSelected = index == selectedIndex,
                 activeHighlightColor = activeHighlightColor,
                 activeTextColor = activeTextColor,
                 inactiveTextColor = inactiveTextColor
             ) {
-                    selectedIndex = index
+                selectedIndex = index
             }
         }
+        /*items.forEachIndexed { index, bottomMenuContent ->
+
+        }*/
     }
 }
 
@@ -394,11 +415,11 @@ fun BottomMenuItem(
         ){
             Icon(painter = painterResource(id = item.iconId),
                 contentDescription = item.title,
-                 tint = if (isSelected) activeTextColor else inactiveTextColor,
-                 modifier = Modifier.size(20.dp)
+                tint = if (isSelected) activeTextColor else inactiveTextColor,
+                modifier = Modifier.size(20.dp)
             )
         }
-        
+
         Text(
             text = item.title,
             color = if (isSelected) activeTextColor else inactiveTextColor
